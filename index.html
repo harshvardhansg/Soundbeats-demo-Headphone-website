@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SoundBeat Headphones</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+    <h1>SoundBeat</h1>
+    <nav>
+        <a href="#">Home</a>
+        <a href="#products">Products</a>
+        <a href="#">Contact</a>
+    </nav>
+</header>
+
+<section class="hero">
+    <div class="hero-content">
+        <h2>Feel The Sound</h2>
+        <p>Scroll down to explore. Watch the background transform as the products come into focus.</p>
+        <button onclick="document.getElementById('products').scrollIntoView({behavior:'smooth'})">Explore</button>
+    </div>
+</section>
+
+<section class="products" id="products">
+    <h2>Our Headphones</h2>
+    <div class="product-grid">
+        <div class="product-card">
+            <img src="https://images.pexels.com/photos/1649771/pexels-photo-1649771.jpeg">
+            <div class="product-info">
+                <h3>Wireless Pro</h3>
+                <p>Noise cancelling with immersive surround sound.</p>
+                <button>Buy Now</button>
+            </div>
+        </div>
+        <div class="product-card">
+            <img src="https://images.pexels.com/photos/577769/pexels-photo-577769.jpeg">
+            <div class="product-info">
+                <h3>Studio Max</h3>
+                <p>Professional-grade sound for creators.</p>
+                <button>Buy Now</button>
+            </div>
+        </div>
+        <div class="product-card">
+            <img src="https://images.pexels.com/photos/2080611/pexels-photo-2080611.jpeg">
+            <div class="product-info">
+                <h3>Bass Boost</h3>
+                <p>Deep bass with premium comfort.</p>
+                <button>Buy Now</button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer>
+<p></p>
+</footer>
+
+<script>
+    const cards = document.querySelectorAll('.product-card');
+
+    window.addEventListener('scroll', () => {
+        const scrollY = window.scrollY;
+
+        const scale = 1 + scrollY * 0.0004;   
+        const blur = Math.min(scrollY * 0.01, 12); 
+        document.documentElement.style.setProperty('--bg-scale', scale);
+        document.documentElement.style.setProperty('--bg-blur', blur + 'px');
+
+
+        const trigger = window.innerHeight * 0.85;
+        cards.forEach(card => {
+            const top = card.getBoundingClientRect().top;
+            if(top < trigger){
+                card.classList.add('show');
+            }
+        });
+    });
+</script>
+
+</body>
+</html>

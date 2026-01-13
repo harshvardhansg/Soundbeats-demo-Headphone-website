@@ -1,0 +1,146 @@
+*{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        :root{
+            --bg-scale:1;
+            --bg-blur:0px;
+        }
+        body{
+            color:#fff;
+        }
+        body::before{
+            content:"";
+            position:fixed;
+            top:0;
+            left:0;
+            width:100%;
+            height:100%;
+            background:
+                linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.85)),
+                url('https://images.pexels.com/photos/3394659/pexels-photo-3394659.jpeg');
+            background-size:cover;
+            background-position:center;
+            transform:scale(var(--bg-scale));
+            filter:blur(var(--bg-blur));
+            transition:transform 0.15s linear, filter 0.15s linear;
+            z-index:-1;
+        }
+        header{
+            position:fixed;
+            top:0;
+            width:100%;
+            padding:15px 60px;
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+            background:rgba(0,0,0,0.6);
+            backdrop-filter:blur(8px);
+            z-index:1000;
+        }
+        header h1{font-size:26px;}
+        nav a{
+            color:#fff;
+            margin-left:25px;
+            text-decoration:none;
+            opacity:0.9;
+        }
+        nav a:hover{opacity:1;}
+
+        .hero{
+            height:100vh;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            text-align:center;
+            padding:0 20px;
+        }
+        .hero-content{
+            animation:fadeUp 1.2s ease;
+        }
+        .hero h2{
+            font-size:60px;
+            margin-bottom:20px;
+        }
+        .hero p{
+            font-size:20px;
+            max-width:700px;
+            margin:0 auto 35px;
+            opacity:0.9;
+        }
+        .hero button{
+            padding:15px 35px;
+            font-size:18px;
+            background:#ff6600;
+            border:none;
+            color:#fff;
+            border-radius:30px;
+            cursor:pointer;
+        }
+        .hero button:hover{background:#e65c00;}
+
+
+        .products h2{
+            text-align:center;
+            font-size:36px;
+            margin-bottom:50px;
+        }
+        .product-grid{
+            display:grid;
+            grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+            gap:40px;
+        }
+        .product-card{
+            background:rgba(255,255,255,0.08);
+            backdrop-filter:blur(14px) saturate(120%);
+            -webkit-backdrop-filter:blur(14px) saturate(120%);
+            border:1px solid rgba(255,255,255,0.18);
+            border-radius:18px;
+            overflow:hidden;
+            box-shadow:0 15px 30px rgba(0,0,0,0.35);
+            transform:translateY(50px);
+            opacity:0;
+            transition:0.6s ease;
+        }
+        .product-card.show{
+            transform:translateY(0);
+            opacity:1;
+        }
+        .product-card img{
+            width:100%;
+            height:260px;
+            object-fit:cover;
+        }
+        .product-info{
+            padding:25px;
+            text-align:center;
+        }
+        .product-info h3{margin-bottom:10px;}
+        .product-info p{
+            font-size:15px;
+            margin-bottom:18px;
+            opacity:0.85;
+        }
+        .product-info button{
+            padding:12px 25px;
+            border:none;
+            background:#ff6600;
+            color:#fff;
+            border-radius:25px;
+            cursor:pointer;
+        }
+        footer{
+            text-align:center;
+            padding:30px;
+            background:rgba(0,0,0,0.6);
+        }
+        @keyframes fadeUp{
+            from{opacity:0;transform:translateY(40px);}
+            to{opacity:1;transform:translateY(0);}
+        }
+        @media(max-width:768px){
+            header{padding:15px 30px;}
+            .hero h2{font-size:40px;}
+        }
